@@ -50,6 +50,19 @@ public:
     string getTeam() const { return team; }
     int getAge() const { return age; }
 
+    double getAverageScore() const
+    {
+        if (matchesCount == 0 || scores == nullptr)
+            return 0.0;
+
+        int total = 0;
+        for (int i = 0; i < matchesCount; i++)
+        {
+            total += scores[i];
+        }
+        return static_cast<double>(total) / matchesCount;
+    }
+
     void print() const
     {
         cout << "Name: " << name << endl;
@@ -57,6 +70,7 @@ public:
         cout << "Team: " << team << endl;
         cout << "Age: " << age << endl;
         printScores();
+        cout << "Average Score: " << getAverageScore() << endl;
     }
 
     Player(string n, string nick, string t, int a)
